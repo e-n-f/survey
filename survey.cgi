@@ -43,8 +43,22 @@ print <<EOF
 <tr>
 <td width="650">
 <img width="640" height="640" src="http://trafficways.org/streetview/$file">
-</td>
-<td align="center">
+
+EOF
+;
+
+if ($ENV{'HTTP_USER_AGENT'} =~ /iPhone/ ||
+    $ENV{'HTTP_USER_AGENT'} =~ /Android/ ||
+    $ENV{'HTTP_USER_AGENT'} =~ /Mobile/
+) {
+	print "<p>";
+} else {
+	print "</td>\n";
+	print "<td align=\"center\">\n";
+}
+
+print <<EOF
+
 Would you enjoy walking here?
 <p>
 <form action="http://trafficways.org/cgi-bin/survey.cgi" method="post">
